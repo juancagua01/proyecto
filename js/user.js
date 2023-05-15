@@ -12,17 +12,8 @@ window.addEventListener('load', function () {
 
         if (user.isUserLogged) {
             userLoggedIndex = index;
-            showUserData();
             //Si el usuario esta registrado, mostramos sus datos
-            // let userName = document.getElementById('userName');
-            // let userEmail = document.getElementById('userEmail');
-            // let userPhone = document.getElementById('userPhone');
-            // let userAge = document.getElementById('userAge');
-
-            // userName.value = parsedData.users[userLoggedIndex].userName;
-            // userEmail.value = parsedData.users[userLoggedIndex].userEmail;
-            // userPhone.value = parsedData.users[userLoggedIndex].userPhone;
-            // userAge.value = parsedData.users[userLoggedIndex].userAge;
+            showUserData();
         }
     });
     if (parsedData.users[userLoggedIndex].userImage != '') {
@@ -40,10 +31,12 @@ function showUserData() {
     let userEmail = document.getElementById('userEmail');
     let userPhone = document.getElementById('userPhone');
     let userAge = document.getElementById('userAge');
+    let userWeight = document.getElementById('userWeight');
     userName.value = parsedData.users[userLoggedIndex].userName;
     userEmail.value = parsedData.users[userLoggedIndex].userEmail;
     userPhone.value = parsedData.users[userLoggedIndex].userPhone;
     userAge.value = parsedData.users[userLoggedIndex].userAge;
+    userWeight.value = parsedData.users[userLoggedIndex].userWeight;
     //constest data
     let userPosition = document.getElementById('userPosition');
     let userContestId = document.getElementById('userContestId');
@@ -89,10 +82,12 @@ userInforForm.addEventListener('submit', function (event) {
     let userEmailValue = document.getElementById('userEmail').value;
     let userPhoneValue = document.getElementById('userPhone').value;
     let userAgeValue = document.getElementById('userAge').value;
+    let userWeightValue = document.getElementById('userWeight').value;
     parsedData.users[userLoggedIndex].userName = userNameValue;
     parsedData.users[userLoggedIndex].userEmail = userEmailValue;
     parsedData.users[userLoggedIndex].userPhone = userPhoneValue;
     parsedData.users[userLoggedIndex].userAge = userAgeValue;
+    parsedData.users[userLoggedIndex].userWeight = userWeightValue;
     userStorage.setItem('users_data', JSON.stringify(parsedData));
     showUserData();
 });

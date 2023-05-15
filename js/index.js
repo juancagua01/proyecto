@@ -7,6 +7,7 @@ let userModel = {
     userImage: '',
     userPhone: '',
     userAge: '',
+    userWeight:'',
     competitionData: {
         position: '',
         contestId: '',
