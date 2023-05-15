@@ -88,3 +88,7 @@ button:hover {
 .file-input-label:hover{
     cursor: pointer;
 }
+.user-image-container{
+    margin: 20px;
+    margin-left: 100px;
+}
