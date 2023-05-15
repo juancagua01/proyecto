@@ -72,11 +72,7 @@ function saveImage() {
         userStorage.setItem('users_data', JSON.stringify(parsedData));
     }
     reader.readAsDataURL(file);
-    if (parsedData.users[userLoggedIndex].userImage != '') {
-        document.getElementById('fileInputContainer').style.display = 'flex';
-    } else {
-        document.getElementById('userImageContainer').style.display = 'none';
-    }
+    showUserData();
 };
 
 let userInforForm = document.getElementById('data_form');
