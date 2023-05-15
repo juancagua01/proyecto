@@ -46,6 +46,13 @@ function showUserData() {
     userContestId.value = parsedData.users[userLoggedIndex].competitionData.contestId;
     userTime.value = parsedData.users[userLoggedIndex].competitionData.time;
     userVelocity.value = parsedData.users[userLoggedIndex].competitionData.velocity;
+
+    if (parsedData.users[userLoggedIndex].userImage != '') {
+        this.document.getElementById('fileInputContainer').style.display = 'none';
+        this.document.getElementById('userImageImg').src = parsedData.users[userLoggedIndex].userImage;
+    } else {
+        this.document.getElementById('userImageContainer').style.display = 'none';
+    }
 }
 
 function userLogOut() {
