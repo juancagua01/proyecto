@@ -49,3 +49,11 @@ input{
     margin: 12px;
     border: none;
 }
+
+button{
+    height: 32px;
+    width: 80px;
+    background-color: #e0e2a7;
+    border: solid 1px grey;
+    border-radius: 12px;
+}
