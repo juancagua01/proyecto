@@ -12,15 +12,17 @@ window.addEventListener('load', function () {
 
         if (user.isUserLogged) {
             userLoggedIndex = index;
+            showUserData();
             //Si el usuario esta registrado, mostramos sus datos
-            let userData = document.getElementById('data_form');
-            let userName = document.getElementById('userName');
-            let userEmail = document.getElementById('userEmail');
-            let userPhone = document.getElementById('userPhone');
+            // let userName = document.getElementById('userName');
+            // let userEmail = document.getElementById('userEmail');
+            // let userPhone = document.getElementById('userPhone');
+            // let userAge = document.getElementById('userAge');
 
-            userName.value = parsedData.users[userLoggedIndex].userName;
-            userEmail.value = parsedData.users[userLoggedIndex].userEmail;
-            userPhone.value = parsedData.users[userLoggedIndex].userPhone;
+            // userName.value = parsedData.users[userLoggedIndex].userName;
+            // userEmail.value = parsedData.users[userLoggedIndex].userEmail;
+            // userPhone.value = parsedData.users[userLoggedIndex].userPhone;
+            // userAge.value = parsedData.users[userLoggedIndex].userAge;
         }
     });
     if (parsedData.users[userLoggedIndex].userImage != '') {
@@ -31,6 +33,27 @@ window.addEventListener('load', function () {
     }
     this.document.getElementById('save-button').addEventListener('click', saveImage);
 });
+
+function showUserData() {
+    //user data
+    let userName = document.getElementById('userName');
+    let userEmail = document.getElementById('userEmail');
+    let userPhone = document.getElementById('userPhone');
+    let userAge = document.getElementById('userAge');
+    userName.value = parsedData.users[userLoggedIndex].userName;
+    userEmail.value = parsedData.users[userLoggedIndex].userEmail;
+    userPhone.value = parsedData.users[userLoggedIndex].userPhone;
+    userAge.value = parsedData.users[userLoggedIndex].userAge;
+    //constest data
+    let userPosition = document.getElementById('userPosition');
+    let userContestId = document.getElementById('userContestId');
+    let userTime = document.getElementById('userTime');
+    let userVelocity = document.getElementById('userVelocity');
+    userPosition.value = parsedData.users[userLoggedIndex].competitionData.position;
+    userContestId.value = parsedData.users[userLoggedIndex].competitionData.contestId;
+    userTime.value = parsedData.users[userLoggedIndex].competitionData.time;
+    userVelocity.value = parsedData.users[userLoggedIndex].competitionData.velocity;
+}
 
 function userLogOut() {
     parsedData.users[userLoggedIndex].isUserLogged = false;
@@ -56,5 +79,37 @@ function saveImage() {
     }
 };
 
+let userInforForm = document.getElementById('data_form');
+let userContestForm = document.getElementById('contest_form');
+
+
+userInforForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    let userNameValue = document.getElementById('userName').value;
+    let userEmailValue = document.getElementById('userEmail').value;
+    let userPhoneValue = document.getElementById('userPhone').value;
+    let userAgeValue = document.getElementById('userAge').value;
+    parsedData.users[userLoggedIndex].userName = userNameValue;
+    parsedData.users[userLoggedIndex].userEmail = userEmailValue;
+    parsedData.users[userLoggedIndex].userPhone = userPhoneValue;
+    parsedData.users[userLoggedIndex].userAge = userAgeValue;
+    userStorage.setItem('users_data', JSON.stringify(parsedData));
+    showUserData();
+});
+
+
+userContestForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    let userPositionValue = document.getElementById('userPosition').value;
+    let userContestIdValue = document.getElementById('userContestId').value;
+    let userTimeValue = document.getElementById('userTime').value;
+    let userVelocityValue = document.getElementById('userVelocity').value;
+    parsedData.users[userLoggedIndex].competitionData.position = userPositionValue;
+    parsedData.users[userLoggedIndex].competitionData.contestId = userContestIdValue;
+    parsedData.users[userLoggedIndex].competitionData.time = userTimeValue;
+    parsedData.users[userLoggedIndex].competitionData.velocity = userVelocityValue;
+    userStorage.setItem('users_data', JSON.stringify(parsedData));
+    showUserData();
+})
 
 
