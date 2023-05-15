@@ -8,12 +8,13 @@ body {
     box-sizing: border-box;
 }
 
-.header-nav-container ul{
+.header-nav-container ul {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     list-style: none;
+    height: 50px;
 }
 
 
@@ -57,4 +58,12 @@ button{
     background-color: #c5d5a7;
     border: solid 1px grey;
     border-radius: 12px;
+}
+button:hover{
+    height: 36px;
+    width: 84px;
+    background-color: #97d783;
+    border: solid 1px grey;
+    border-radius: 12px;
+    cursor: pointer;
 }
